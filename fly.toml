@@ -1,0 +1,43 @@
+app = "redtail"
+primary_region = "ord"
+
+kill_signal = "SIGTERM"
+kill_timeout = 240
+
+[build]
+dockerfile = "agent/Dockerfile"
+
+[mounts]
+source = "redtail_data"
+destination = "/data"
+initial_size = "10GB"
+
+[[services]]
+internal_port = 6379
+protocol = "tcp"
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 1
+
+[services.concurrency]
+type = "connections"
+hard_limit = 50
+soft_limit = 20
+
+[[services.tcp_checks]]
+grace_period = "2s"
+interval = "15s"
+restart_limit = 0
+timeout = "2s"
+
+[checks]
+[checks.redis]
+grace_period = "2s"
+interval = "15s"
+port = 6379
+timeout = "2s"
+type = "tcp"
+
+# [metrics]
+# port = 9091
+# path = "/metrics"

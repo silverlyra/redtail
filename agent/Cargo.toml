@@ -11,4 +11,5 @@ readme = "Readme.md"
 crate-type = ["cdylib"]
 
 [dependencies]
+flytrap = "0.1.0"
 redis-module = "2.0.7"
