@@ -1,0 +1,13 @@
+[workspace]
+members = ["agent"]
+resolver = "2"
+
+[workspace.package]
+repository = "https://github.com/silverlyra/redtail"
+authors = ["Lyra Torben Naeseth <lyra@lyra.codes>"]
+
+[workspace.dependencies]
+async-trait = { version = "^0.1.74" }
+derive_more = { version = "^0.99" }
+futures-core = { version = "^0.3", default-features = false }
+thiserror = { version = "^1.0.50" }
